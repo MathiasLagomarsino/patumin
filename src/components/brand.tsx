@@ -1,10 +1,14 @@
 import Link from "next/link";
 
 export function BrandMark({ className = "" }: { className?: string }) {
-  return <svg className={className} width="34" height="40" viewBox="0 0 34 40" fill="none" aria-hidden="true">
-    <path d="M8 33V13C8 7 12 4 17 4C24 4 28 8 28 14C28 20 23 24 17 24H14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-    <path d="M14 18V11L18 14L22 11V18C22 21 14 21 14 18Z" fill="currentColor" />
-    <path d="M5 36H12M25 29L26 31L29 32L26 33L25 36L24 33L21 32L24 31L25 29Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  return <svg className={`brand-mark ${className}`} width="48" height="48" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+    <g transform="rotate(-9 24 24)">
+      <ellipse cx="9.5" cy="22" rx="4.1" ry="6.1" transform="rotate(-28 9.5 22)" />
+      <ellipse cx="18.3" cy="13.4" rx="4.4" ry="6.3" transform="rotate(-12 18.3 13.4)" />
+      <ellipse cx="29.5" cy="13" rx="4.5" ry="6.5" transform="rotate(13 29.5 13)" />
+      <ellipse cx="38" cy="21.5" rx="4.1" ry="5.9" transform="rotate(29 38 21.5)" />
+      <path fillRule="evenodd" d="M24 22.4C20.1 22.4 18.9 26.5 15 29.4C11.7 31.8 11.1 35.8 13.7 38.4C16.3 41 20 38.9 24 38.9C28 38.9 31.7 41 34.3 38.4C36.9 35.8 36.3 31.8 33 29.4C29.1 26.5 27.9 22.4 24 22.4ZM20.6 31.5a1.1 1.1 0 1 1-2.2 0a1.1 1.1 0 1 1 2.2 0ZM29.6 31.5a1.1 1.1 0 1 1-2.2 0a1.1 1.1 0 1 1 2.2 0ZM21.1 34.1C22.7 35.6 25.3 35.6 26.9 34.1L27.8 35.2C25.7 37.3 22.3 37.3 20.2 35.2Z" />
+    </g>
   </svg>;
 }
 

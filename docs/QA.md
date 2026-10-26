@@ -1,5 +1,19 @@
 # Verificación de la fase 1
 
+## Revisión de identidad — 25 de octubre de 2026
+
+Paleta actualizada a beige, gris y púrpura. Logo reemplazado por una patita vectorial con sonrisa, variantes exportables y favicon sincronizados. El saludo de la marca dura 560 ms y está desactivado con `prefers-reduced-motion`.
+
+- Lint y TypeScript: aprobados.
+- Contrastes calculados: CTA 7,18:1; texto secundario sobre beige 5,29:1; púrpura sobre lila claro 5,87:1.
+- Todas las referencias a variables CSS de color resuelven correctamente.
+- Home y producto sin desbordamiento horizontal a 360, 390, 768, 1024 y 1440 px.
+- Selección de mascota verificada con fondo lila y borde púrpura. Consola sin errores en el recorrido revisado.
+- Build: compila los componentes y supera TypeScript, pero la exportación se detiene por la configuración preexistente `output: "export"` y la ruta dinámica `/pedido/[reference]` sin `generateStaticParams`. La configuración de publicación quedó fuera de este cambio visual.
+- Capturas: `screenshots/home-purple-desktop.png`, `screenshots/home-purple-mobile.png`, `screenshots/product-purple-desktop.png` y `screenshots/paw-logo.png`.
+
+La evidencia de la entrega inicial se conserva a continuación.
+
 Fecha: 24 de octubre de 2026. Entorno: Windows, Node 24, compilación de producción de Next.js 16.4.3.
 
 ## Comprobaciones automatizadas

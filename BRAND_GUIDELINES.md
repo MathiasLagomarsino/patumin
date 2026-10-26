@@ -2,7 +2,7 @@
 
 Versión de trabajo para la primera etapa visual. El wordmark es provisional y las imágenes generadas son demostraciones, no evidencia de piezas entregadas.
 
-Las variantes SVG están en `public/brand/patumin-horizontal.svg`, `patumin-stacked.svg` y `patumin-monochrome.svg`. Mantienen texto editable con DM Serif Display y DM Sans; requieren esas fuentes para reproducir la tipografía exacta. Antes de uso en imprenta, convertir los textos a curvas y validar la marca definitiva. El isotipo de la web y el favicon comparten el mismo trazo.
+Las variantes SVG están en `public/brand/patumin-horizontal.svg`, `patumin-stacked.svg` y `patumin-monochrome.svg`. Mantienen texto editable con DM Serif Display y DM Sans; requieren esas fuentes para reproducir la tipografía exacta. Antes de uso en imprenta, convertir los textos a curvas y validar la marca definitiva. El isotipo de la web y el favicon comparten la misma patita, disponible también en `public/brand/patumin-mark.svg`. Para sincronizar los SVG con el componente de marca, ejecutar `node scripts/export-brand.mjs`.
 
 ## Idea de marca
 
@@ -19,21 +19,25 @@ La identidad debe comunicar afecto y calidad sin infantilizar el producto ni dep
 
 ## Color
 
+Paleta actualizada el 25 de octubre de 2026: beige cálido, grises cálidos y púrpura ciruela.
+
 | Nombre | Valor | Uso |
 | --- | --- | --- |
-| Crema suave | `#F8F3ED` | Fondo principal y espacio de descanso |
-| Blanco cálido | `#FFFCF8` | Superficies, tarjetas y texto sobre verde |
-| Rosa empolvado | `#E7CFC9` | Momentos emotivos, superficies secundarias |
-| Lila suave | `#CFC3E6` | Detalles y exploraciones de producto |
-| Verde salvia | `#BCC7B5` | Proceso artesanal y superficies complementarias |
-| Grafito cálido | `#383634` | Títulos y texto principal |
-| Gris topo | `#5E5654` | Texto secundario |
-| Verde profundo | `#35493F` | Acciones principales y acentos con contraste |
-| Verde oscuro | `#29392F` | Estado hover de acciones principales |
+| Beige claro | `#F3EDE3` | Fondo principal |
+| Blanco cálido | `#FFFCF7` | Tarjetas y superficies |
+| Beige arena | `#E8DECF` | Bloques artesanales y fondos de imagen |
+| Beige suave | `#F0E8DD` | Footer y superficies secundarias |
+| Gris suave | `#E7E3E0` | Beneficios y superficies neutras |
+| Grafito cálido | `#3E3A40` | Títulos y texto principal |
+| Gris cálido | `#665F69` | Texto secundario |
+| Púrpura ciruela | `#684A7C` | Botones, iconos y acentos |
+| Púrpura profundo | `#50365F` | Hover de acciones principales |
+| Lila niebla | `#EBE3F0` | Selección, comparación y avisos |
+| Lila empolvado | `#D8C7E2` | CTA final y acentos decorativos |
 
-Aproximadamente 65–70 % de crema y blanco cálido, 20–25 % de superficies pastel y el resto de tinta y contraste. No colocar texto pastel sobre fondos claros. Usar los pasteles como fondo de texto oscuro y verificar el contraste cuando se añada una combinación.
+Predominan beige y grises; el púrpura organiza las acciones y los momentos destacados. Usar los lilas como superficies con texto oscuro. No colocar texto pastel sobre fondos claros. El botón principal tiene contraste aproximado de 7,18:1 sobre blanco cálido; el texto secundario, 5,29:1 sobre beige.
 
-Los tokens y su correspondencia con Tailwind se mantienen en `src/app/globals.css`. No crear una paleta distinta por página.
+Los tokens y su correspondencia con Tailwind se mantienen en `src/app/globals.css`. Todas las páginas consumen la misma paleta.
 
 ## Tipografía
 
@@ -47,11 +51,11 @@ Los encabezados son frases naturales, preferentemente en minúsculas después de
 
 ## Logo y variantes
 
-La identidad inicial utiliza un wordmark tipográfico legible y un símbolo de trazo sencillo. Es una base de implementación, pendiente de validación y refinamiento final.
+La identidad inicial utiliza un wordmark tipográfico legible y una patita propia de formas suaves, almohadillas asimétricas y una sonrisa discreta calada en la almohadilla central. Es una base de implementación, pendiente de validación y refinamiento final.
 
 - **Horizontal:** símbolo junto al nombre; uso principal en navegación y packaging ancho.
 - **Apilada:** símbolo sobre el nombre; apropiada para perfiles, tarjetas y etiquetas cuadradas.
-- **Monocromática:** una sola tinta verde profundo sobre claro, o blanco cálido sobre verde.
+- **Monocromática:** una sola tinta grafito sobre claro; el favicon usa blanco cálido sobre púrpura.
 - **Área de respeto:** conservar alrededor al menos la altura de una letra del descriptor.
 - **Reducción:** si el descriptor pierde legibilidad, retirarlo. No convertirlo en texto ilegible para mantener la composición.
 
@@ -68,7 +72,7 @@ No estirar, agregar sombras duras, usar degradados, quitar la tilde o reemplazar
 
 ## Componentes e interacción
 
-- **Botón principal:** verde profundo y texto claro. Un propósito claro por bloque: “Crear mi miniatura”, “Empezar mi pedido”.
+- **Botón principal:** púrpura ciruela y texto claro. Un propósito claro por bloque: “Crear mi miniatura”, “Empezar mi pedido”.
 - **Botón secundario:** contorno o superficie discreta. Nunca competir visualmente con el principal.
 - **Enlace editorial:** texto breve con flecha, área de interacción suficiente y subrayado o feedback reconocible.
 - **Galería:** imágenes grandes, identificación de cada concepto y controles de filtro reales. La ampliación debe cerrarse con Escape y devolver el foco al control original.
@@ -76,11 +80,11 @@ No estirar, agregar sombras duras, usar degradados, quitar la tilde o reemplazar
 - **Formularios:** labels persistentes, instrucciones cerca del campo y mensajes de error específicos. No usar solamente placeholder como etiqueta.
 - **Estados vacíos:** explicar lo que falta y el siguiente paso posible. Nunca simular que un pago, mensaje o pedido se completó.
 - **Foco:** visible para navegación por teclado. El color no debe ser el único indicador de selección o error.
-- **Movimiento:** transiciones breves de 150–300 ms, sin animaciones permanentes; respetar `prefers-reduced-motion`.
+- **Movimiento:** transiciones breves de 150–300 ms, sin animaciones permanentes. La patita hace un saludo breve al pasar el cursor o enfocar la marca con teclado; respetar `prefers-reduced-motion`.
 
 ## Fotografía y demostraciones
 
-La dirección busca iluminación suave, superficies crema, salvia o lila, sombras naturales, texturas reales y encuadres que permitan apreciar pelaje, marcas y expresión. Las figuras deben sentirse cuidadas y reconocibles, sin caricatura exagerada.
+La dirección busca iluminación suave, superficies beige, gris cálido o lila, sombras naturales, texturas reales y encuadres que permitan apreciar pelaje, marcas y expresión. Las figuras deben sentirse cuidadas y reconocibles, sin caricatura exagerada.
 
 Las imágenes actuales son conceptos generados con IA. Deben llevar una identificación visible como “Concepto · IA” o “Imagen de concepto generada con IA”. Su texto alternativo también debe describir su carácter demostrativo. No llamarlas trabajos reales, resultados de clientes, pedidos entregados ni testimonios.
 
