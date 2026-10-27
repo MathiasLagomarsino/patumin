@@ -17,10 +17,7 @@ export type PetType = "perro" | "gato";
 export interface MiniatureDraft {
   version: 1;
   variantId: string;
-  petType: PetType;
-  petName: string;
   quantity: number;
-  notes: string;
 }
 
 export interface CustomerDetails {

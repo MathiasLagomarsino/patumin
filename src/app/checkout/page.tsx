@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/metadata";
 import "../crear-mi-miniatura/product.css";
 import "./checkout.css";
 
-export const metadata = { ...pageMetadata("Tu miniatura", "Revisá la personalización de tu miniatura PATUMÍN. Vista previa sin pedidos ni pagos habilitados.", "/checkout"), robots: { index: false, follow: false } };
+export const metadata = { ...pageMetadata("Finalizar mi pedido", "Contacto, entrega y resumen de tu miniatura PATUMÍN. Vista previa sin pedidos ni pagos habilitados.", "/checkout"), robots: { index: false, follow: false } };
 
 export default function CheckoutPage() {
   return <CheckoutPreview />;

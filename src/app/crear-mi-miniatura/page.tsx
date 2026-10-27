@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 import "./product.css";
 
-export const metadata = pageMetadata("Creá tu miniatura", "Imaginá una miniatura personalizada de tu perro o gato, modelada para vos y pintada a mano. Explorá la personalización de PATUMÍN.", "/crear-mi-miniatura");
+export const metadata = pageMetadata("Elegí tu miniatura", "Elegí tamaño y cantidad para tu miniatura personalizada. Después de comprar, compartís las fotos y los detalles de tu mascota por WhatsApp.", "/crear-mi-miniatura");
 
 export default function ProductPage() {
   return (

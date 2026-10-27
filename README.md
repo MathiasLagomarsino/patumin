@@ -4,7 +4,7 @@ Una versión chiquita de un amor enorme. Tienda boutique de miniaturas personali
 
 ## Estado del proyecto
 
-**Fase 1 implementada: identidad inicial y frontend navegable.** La web incluye home completa, personalizador, galería filtrable y ampliable, proceso, preguntas frecuentes, contacto y borradores de políticas. El checkout es una vista previa: permite revisar la personalización y validar un formulario local, pero no crea pedidos ni procesa pagos.
+**Fase 1 implementada: identidad inicial y frontend navegable.** La web incluye home completa, selector de tamaño y cantidad, galería filtrable y ampliable, proceso, preguntas frecuentes, contacto y borradores de políticas. El checkout es una vista previa: reúne contacto, entrega y resumen en una sola pantalla, sin un paso intermedio de revisión de datos, pero no crea pedidos ni procesa pagos.
 
 Las cinco fotografías son conceptos generados con IA, identificados en pantalla. No son pruebas de trabajos entregados. No se inventaron precios, medidas, contactos, testimonios ni información fiscal.
 
@@ -12,9 +12,9 @@ Las cinco fotografías son conceptos generados con IA, identificados en pantalla
 | --- | --- |
 | Identidad, home y páginas informativas | Implementadas |
 | Galería con filtros, zoom y navegación por teclado | Implementada |
-| Personalización de mascota, cantidad y observaciones | Implementada |
+| Selección de tamaño y cantidad, con acceso directo al checkout | Implementada |
 | Recuperación de la selección en el mismo navegador | Implementada con `localStorage` |
-| Validación local del formulario de entrega | Implementada; datos personales solo en memoria |
+| Formulario de contacto y entrega | Vista previa; pago deshabilitado y datos sin enviar ni persistir |
 | Precios, variantes y costos de envío | Pendientes de definición comercial |
 | Creación y persistencia de pedidos | Fase 2; no implementadas |
 | Mercado Pago y webhooks | Fase 2; no configurados ni probados |
@@ -80,7 +80,7 @@ Las rutas de pedido no exponen información ni confirman transacciones. Se expor
 
 ## Personalización y privacidad
 
-El borrador guarda exclusivamente tipo y nombre de mascota, variante demostrativa, cantidad y observaciones bajo `patumin:miniature-draft:v1`. Se valida al recuperarlo, se eliminan campos desconocidos y se rechazan datos corruptos. La acción “Borrar selección” permite eliminarlo. Nombre del comprador, email, teléfono y domicilio no se guardan ni se envían en esta fase.
+El borrador guarda exclusivamente la variante demostrativa y la cantidad bajo `patumin:miniature-draft:v1`. Se valida al recuperarlo, se eliminan campos desconocidos y se rechazan datos corruptos. Las selecciones anteriores siguen funcionando; sus datos de mascota se descartan al leerlos y al volver a guardar. El nombre, las fotos y los detalles de la mascota se pedirán por WhatsApp después del pago confirmado. La acción “Borrar selección” permite eliminarlo. Nombre del comprador, email, teléfono y domicilio no se guardan ni se envían en esta fase.
 
 No hay analítica, cookies publicitarias, carga de fotos ni formularios que simulen un envío exitoso. Las políticas son borradores explícitos que requieren revisión legal argentina.
 
@@ -99,7 +99,7 @@ Antes de conectar el checkout deben implementarse y probarse:
 
 La integración aún no está instalada ni habilitada. Implementar Checkout Pro con el SDK oficial vigente, credenciales de prueba y documentación oficial actualizada. Crear preferencias en servidor, verificar la firma de notificaciones y consultar el pago al proveedor, comparando importe, moneda, cuenta receptora y referencia del pedido. Aplicar idempotencia de eventos y transiciones de estado; una redirección del navegador nunca es una fuente de verdad.
 
-Después de verificar un pago aprobado, habilitar el enlace `https://wa.me/NUMERO?text=MENSAJE` con referencia y nombre de mascota. No enviar datos de entrega por ese enlace. Abrir WhatsApp no equivale a recibir fotografías: el pedido debe seguir esperando fotos hasta la confirmación del equipo.
+Después de verificar un pago aprobado, habilitar el enlace `https://wa.me/NUMERO?text=MENSAJE` con referencia del pedido para solicitar las fotos, el nombre y los detalles de la mascota. No enviar datos de entrega por ese enlace. Abrir WhatsApp no equivale a recibir fotografías: el pedido debe seguir esperando fotos hasta la confirmación del equipo.
 
 ## Verificaciones
 
@@ -114,7 +114,7 @@ npm run build
 
 Las pruebas de Node cubren recuperación de borradores, datos manipulados, descarte de datos ajenos a la personalización y validaciones de contacto/CPA. Ver [QA.md](docs/QA.md) para la evidencia y límites de la verificación de esta entrega.
 
-La revisión visual debe incluir 360, 390, 768, 1024 y 1440 px; menú móvil, filtros, zoom con Escape, acordeones, selección y recuperación, validación del formulario y navegación con teclado. Todavía no existen pruebas de pagos: la integración no existe.
+La revisión visual debe incluir 360, 390, 768, 1024 y 1440 px; menú móvil, filtros, zoom con Escape, acordeones, selección y recuperación sin datos de mascota, formulario de entrega y navegación con teclado. Todavía no existen pruebas de pagos: la integración no existe.
 
 ## Despliegue
 

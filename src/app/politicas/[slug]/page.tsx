@@ -11,7 +11,7 @@ const policies = {
     title: "Política de privacidad",
     description: "Cómo vamos a cuidar los datos que compartís con PATUMÍN.",
     sections: [
-      { title: "Datos durante esta etapa", text: "Esta versión permite explorar y guardar una idea de personalización en el navegador del dispositivo. No hay pedidos, pagos ni formularios de contacto operativos. No envíes fotografías o información sensible mediante campos de observaciones." },
+      { title: "Datos durante esta etapa", text: "Esta versión guarda solo el tamaño seleccionado y la cantidad en el navegador del dispositivo. Los datos de contacto y entrega que pruebes en el checkout no se envían ni se guardan. Todavía no hay pedidos ni pagos operativos." },
       { title: "Información para una futura compra", text: "Antes de abrir la tienda se informará qué datos personales se solicitan, con qué finalidad, quién es el responsable, dónde se almacenan, durante cuánto tiempo se conservan y cómo ejercer los derechos que correspondan." },
       { title: "Fotografías de tu mascota", text: "El proceso previsto contempla recibir las fotografías por WhatsApp después de un pago verificado. Las condiciones de uso, conservación y eliminación de esas imágenes deberán informarse antes de recibirlas. Publicar una imagen en la galería requerirá la autorización correspondiente." },
       { title: "Servicios de terceros y contacto", text: "Se deben completar los proveedores efectivamente utilizados, las condiciones de tratamiento de datos y un canal de contacto válido. No se han incorporado herramientas de analítica publicitaria en esta primera versión." },

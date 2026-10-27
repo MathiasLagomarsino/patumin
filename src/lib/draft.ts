@@ -6,10 +6,7 @@ export const DRAFT_CHANGE_EVENT = "patumin:draft-changed";
 export const emptyDraft: MiniatureDraft = {
   version: 1,
   variantId: "demo",
-  petType: "perro",
-  petName: "",
   quantity: 1,
-  notes: "",
 };
 
 /** Treat browser storage as untrusted input. Invalid or stale drafts are discarded. */
@@ -23,24 +20,15 @@ export function parseDraft(raw: string | null): MiniatureDraft | null {
       draft.version !== 1 ||
       typeof draft.variantId !== "string" ||
       !/^[a-zA-Z0-9_-]{1,80}$/.test(draft.variantId) ||
-      (draft.petType !== "perro" && draft.petType !== "gato") ||
-      typeof draft.petName !== "string" ||
-      draft.petName.trim().length === 0 ||
-      draft.petName.length > 60 ||
       typeof draft.quantity !== "number" ||
       !Number.isInteger(draft.quantity) ||
       draft.quantity < 1 ||
-      draft.quantity > 5 ||
-      typeof draft.notes !== "string" ||
-      draft.notes.length > 500
+      draft.quantity > 5
     ) return null;
     return {
       version: 1,
       variantId: draft.variantId,
-      petType: draft.petType,
-      petName: draft.petName.trim(),
       quantity: draft.quantity,
-      notes: draft.notes.trim(),
     };
   } catch {
     return null;
@@ -69,7 +57,7 @@ export function subscribeDraft(callback: () => void): () => void {
   };
 }
 
-/** Only customization is saved. Customer contact and address never go into storage. */
+/** Only variant and quantity are saved. Pet details are collected after purchase. */
 export function saveDraft(draft: MiniatureDraft): boolean {
   const normalized = parseDraft(JSON.stringify(draft));
   if (!normalized) return false;

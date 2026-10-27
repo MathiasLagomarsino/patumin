@@ -4,14 +4,14 @@ export const productionEstimate = `Cada miniatura se realiza especialmente para 
 
 export const processSteps = [
   {
-    title: "Elegís tu miniatura.",
+    title: "Elegís y comprás tu miniatura.",
     description:
-      "Seleccionás las opciones disponibles y realizás tu pedido. Antes de confirmar, vas a conocer el precio y el costo del envío.",
+      "Seleccionás el tamaño y la cantidad, completás tus datos de entrega y pagás. Antes de confirmar, vas a conocer el precio final con el envío incluido.",
   },
   {
     title: "Nos compartís sus fotos.",
     description:
-      "Después de comprar, enviás las fotografías por WhatsApp. Una mirada, sus manchitas, su postura: cada referencia nos ayuda a conocerlo.",
+      "Después de confirmar el pago, nos enviás por WhatsApp las fotos, el nombre y los detalles de tu mascota. Una mirada, sus manchitas, su postura: cada referencia nos ayuda a conocerlo.",
   },
   {
     title: "La modelamos especialmente para vos.",
@@ -34,7 +34,7 @@ export const faqs = [
   {
     question: "¿Cómo puedo pedir una miniatura?",
     answer:
-      "Desde “Crear mi miniatura” podés explorar la personalización. Estamos preparando la apertura de pedidos: los tamaños, precios y medios de pago se publicarán cuando estén confirmados. Por ahora podés guardar tu idea en este dispositivo, sin realizar una compra.",
+      "El proceso es simple: elegís tamaño y cantidad, completás tus datos y pagás. Después nos enviás las fotos, el nombre y los detalles de tu mascota por WhatsApp. Estamos preparando la apertura de pedidos: por ahora podés recorrer la vista previa, sin realizar una compra. Los tamaños, precios y medios de pago se publicarán cuando estén confirmados.",
   },
   {
     question: "¿Qué fotografías necesitan?",

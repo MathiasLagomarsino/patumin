@@ -1,5 +1,17 @@
 # Verificación de la fase 1
 
+## Simplificación del pedido — 27 de octubre de 2026
+
+El producto pide únicamente tamaño y cantidad y lleva directamente al checkout. Se retiraron tipo, nombre y observaciones de mascota del formulario y del borrador. Contacto, entrega y resumen comparten una pantalla sin la acción intermedia “Revisar mis datos”. Fotos, nombre y detalles se coordinan por WhatsApp después del pago confirmado, cuando se habiliten las compras.
+
+- Lint, build con prefijo `/patumin`, siete pruebas unitarias y validación de las 16 páginas exportadas: aprobados.
+- Navegador sobre la exportación local: continuar sin datos de mascota, cantidad 2 conservada en el resumen y al editar, límite de 5 y botón de incremento deshabilitado al alcanzarlo.
+- Checkout sin desbordes horizontales a 360, 390, 768, 1024 y 1440 px; revisión visual de producto en escritorio y móvil y checkout en escritorio.
+- Consola sin errores ni advertencias en el recorrido comprobado. Pago deshabilitado con aviso visible; no se probó ninguna transacción.
+- Las pruebas verifican compatibilidad con borradores anteriores, descarte de datos de mascota y rechazo de cantidades o variantes malformadas.
+
+Las comprobaciones del personalizador y de la validación local descritas en la revisión inicial más abajo corresponden al flujo anterior y quedan reemplazadas por este recorrido.
+
 ## Corrección de GitHub Pages — 27 de octubre de 2026
 
 Se reprodujo el fallo del job `122381702365`, commit `c391dd3e519a576e39ac6dc92afc5c92c575b935`: `next build` detenía la exportación porque `/pedido/[reference]` no tenía `generateStaticParams`.
