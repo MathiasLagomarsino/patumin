@@ -9,13 +9,14 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { siteConfig } from "@/config/site";
+import { assetPath } from "@/lib/urls";
 
 export const metadata: Metadata = {
   title: { default: "PATUMÍN — Tu mascota, siempre cerca.", template: "%s | PATUMÍN" },
   description: siteConfig.description,
-  metadataBase: new URL(siteConfig.domain || "http://127.0.0.1:3000"),
+  metadataBase: new URL(new URL(siteConfig.domain || "http://127.0.0.1:3000").origin),
   robots: siteConfig.demo ? { index: false, follow: false } : { index: true, follow: true },
-  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  icons: { icon: assetPath("/icon.svg"), apple: assetPath("/icon.svg") },
 };
 
 export const viewport: Viewport = { themeColor: "#F3EDE3", width: "device-width", initialScale: 1 };

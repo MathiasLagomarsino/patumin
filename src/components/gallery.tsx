@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { assetPath } from "@/lib/urls";
 import { useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 
@@ -11,7 +12,7 @@ const galleryItems = [
   {
     id: "perro",
     category: "Perros",
-    src: "/assets/hero-miniature.webp",
+    src: assetPath("/assets/hero-miniature.webp"),
     title: "Esa mirada tan suya.",
     detail: "Exploración de una miniatura de perro",
     alt: "Concepto generado con IA de una miniatura de golden retriever junto a una fotografía de referencia",
@@ -19,7 +20,7 @@ const galleryItems = [
   {
     id: "gato",
     category: "Gatos",
-    src: "/assets/cat-miniature.webp",
+    src: assetPath("/assets/cat-miniature.webp"),
     title: "Sus pequeñas particularidades.",
     detail: "Exploración de una miniatura de gato",
     alt: "Concepto generado con IA de una miniatura de gato atigrado sobre un fondo lila suave",
@@ -27,7 +28,7 @@ const galleryItems = [
   {
     id: "perro-blanco-negro",
     category: "Perros",
-    src: "/assets/dog-miniature.webp",
+    src: assetPath("/assets/dog-miniature.webp"),
     title: "Todo lo que lo hace único.",
     detail: "Exploración de una miniatura de perro blanco y negro",
     alt: "Concepto generado con IA de una miniatura de perro blanco y negro sobre una base redonda, con fondo verde salvia",
@@ -35,7 +36,7 @@ const galleryItems = [
   {
     id: "artesania",
     category: "Proceso",
-    src: "/assets/craft-miniature.webp",
+    src: assetPath("/assets/craft-miniature.webp"),
     title: "El cariño está en los detalles.",
     detail: "Concepto visual de pintura artesanal",
     alt: "Escena demostrativa generada con IA de una mano pintando una miniatura de perro con un pincel",

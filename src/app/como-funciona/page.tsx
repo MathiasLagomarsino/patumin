@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/urls";
 import Link from "next/link";
 import { ArrowRight, Clock3, MessageCircle } from "lucide-react";
 import { processSteps, productionEstimate } from "@/config/content";
@@ -22,7 +23,7 @@ export default function HowItWorksPage() {
           <Link href="/crear-mi-miniatura" className="button button-primary">Empezar mi pedido <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
         <figure className="process-cover">
-          <Image src="/assets/craft-miniature.webp" alt="Concepto generado con IA del proceso de pintura a mano de una miniatura de perro" fill sizes="(max-width: 800px) 100vw, 46vw" priority />
+          <Image src={assetPath("/assets/craft-miniature.webp")} alt="Concepto generado con IA del proceso de pintura a mano de una miniatura de perro" fill sizes="(max-width: 800px) 100vw, 46vw" priority />
           <figcaption>Imagen de concepto generada con IA</figcaption>
         </figure>
       </section>

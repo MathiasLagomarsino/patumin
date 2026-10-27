@@ -20,7 +20,7 @@ Las cinco fotografías son conceptos generados con IA, identificados en pantalla
 | Mercado Pago y webhooks | Fase 2; no configurados ni probados |
 | Confirmación verificada y WhatsApp poscompra | Fase 2; no implementados |
 | Base de datos y gestión administrativa | Fases 2–3; no implementadas |
-| Publicación | Preparada para Vercel; no realizada |
+| Publicación | Exportación estática para GitHub Pages; backend comercial pendiente |
 
 ## Stack
 
@@ -37,14 +37,16 @@ npm ci
 npm run dev
 ```
 
-Abrí [http://127.0.0.1:3000](http://127.0.0.1:3000). Para probar la compilación optimizada:
+Abrí [http://127.0.0.1:3000](http://127.0.0.1:3000). Para comprobar la exportación estática:
 
 ```sh
 npm run build
-npm start
+npm run test:export
 ```
 
 El servidor local escucha en loopback. No se expone automáticamente a otros dispositivos.
+
+La configuración actual usa `output: "export"` y genera `out/`. `next start` requiere un servidor Next.js y no sirve esta exportación: usá `npm run dev` para desarrollo o un servidor de archivos estáticos para revisar `out/`.
 
 ### Windows y certificados corporativos
 
@@ -57,6 +59,7 @@ Copiá `.env.example` a `.env.local`. Ninguna variable es necesaria para explora
 | Variable | Uso actual |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Dominio confirmado con `https://`; metadata y canonical |
+| `NEXT_PUBLIC_BASE_PATH` | Subdirectorio de publicación: vacío localmente o `/patumin` en Pages |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Número oficial internacional, solo dígitos |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Email comercial confirmado |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | URL completa del perfil oficial |
@@ -73,7 +76,7 @@ Los secretos nunca deben llevar el prefijo `NEXT_PUBLIC_`, subirse a Git o inclu
 
 `/`, `/crear-mi-miniatura`, `/galeria`, `/como-funciona`, `/preguntas-frecuentes`, `/contacto`, `/checkout`, `/pedido/confirmacion`, `/pedido/[reference]` y `/politicas/{privacidad,terminos,envios,devoluciones}`.
 
-Las rutas de pedido no exponen información ni confirman transacciones. `POST /api/checkout` devuelve HTTP 503 `CHECKOUT_NOT_CONFIGURED`, sin procesar datos ni crear registros. Una URL con parámetros `status=approved` nunca confirma un pago.
+Las rutas de pedido no exponen información ni confirman transacciones. Se exporta únicamente `/pedido/consulta`, una pantalla informativa sin datos de clientes. Cualquier otra referencia queda fuera de la exportación y devuelve 404. `POST /api/checkout` es un bloqueo HTTP 503 `CHECKOUT_NOT_CONFIGURED` cuando se ejecuta en un servidor Next.js; no se publica como API en GitHub Pages. Una URL con parámetros `status=approved` nunca confirma un pago.
 
 ## Personalización y privacidad
 
@@ -107,7 +110,7 @@ npm test
 npm run build
 ```
 
-Con `npm start` en otra terminal, `npm run test:routes` comprueba las rutas y el bloqueo del checkout por HTTP.
+`npm run test:export` valida el contenido de `out/`, los enlaces, las imágenes y las rutas con el prefijo de publicación. Debe recibir las mismas variables de entorno que el build. No requiere levantar un servidor.
 
 Las pruebas de Node cubren recuperación de borradores, datos manipulados, descarte de datos ajenos a la personalización y validaciones de contacto/CPA. Ver [QA.md](docs/QA.md) para la evidencia y límites de la verificación de esta entrega.
 
@@ -115,11 +118,23 @@ La revisión visual debe incluir 360, 390, 768, 1024 y 1440 px; menú móvil, fi
 
 ## Despliegue
 
-1. Importar este repositorio en Vercel como proyecto Next.js, con Node 24, `npm ci` y `npm run build`.
-2. Configurar únicamente las variables necesarias para el entorno; mantener credenciales de prueba y producción separadas.
-3. Mantener el modo demo y los pagos cerrados durante la revisión.
-4. Completar [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md), implementar fases 2–3 y verificar el flujo de prueba antes de habilitar operaciones.
-5. Incorporar dominio, datos reales y políticas revisadas antes de activar indexación y publicar comercialmente.
+El workflow `.github/workflows/nextjs.yml` publica la fase visual en GitHub Pages. En Settings → Pages, seleccionar GitHub Actions como fuente. Un push a `main` o una ejecución manual inicia el flujo.
+
+1. Instala dependencias y ejecuta lint, TypeScript y pruebas con Node 24.
+2. Obtiene `base_path` y `base_url` desde `actions/configure-pages`, respetando también dominios personalizados.
+3. Construye `out/`, agrega `.nojekyll`, valida páginas y recursos y recién entonces carga el artefacto de Pages.
+4. Despliega con `actions/deploy-pages`. El antiguo workflow de Jekyll fue retirado para evitar publicaciones competidoras.
+
+Para reproducir el build del repositorio en PowerShell:
+
+```powershell
+$env:NEXT_PUBLIC_BASE_PATH = '/patumin'
+$env:NEXT_PUBLIC_SITE_URL = 'https://MathiasLagomarsino.github.io/patumin'
+npm run build
+npm run test:export
+```
+
+GitHub Pages solo aloja la vista previa estática. Para habilitar pagos, webhooks o administración será necesario un backend y hosting con ejecución de servidor, además de completar [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). Mantener el modo demo y los pagos cerrados hasta implementar y verificar esas integraciones.
 
 No hace falta reescribir la interfaz para conectar las integraciones, pero habilitar ventas sí requiere implementar y probar los servicios pendientes.
 

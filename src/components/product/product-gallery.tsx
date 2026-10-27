@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { assetPath } from "@/lib/urls";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Expand, X } from "lucide-react";
 
 const images = [
-  { src: "/assets/hero-miniature.webp", alt: "Concepto de una miniatura de perro junto a su fotografía de referencia", label: "Su versión mini" },
-  { src: "/assets/cat-miniature.webp", alt: "Concepto de una miniatura personalizada de gato", label: "También para gatos" },
-  { src: "/assets/craft-miniature.webp", alt: "Escena conceptual del proceso de pintura de una miniatura", label: "El detalle artesanal" },
+  { src: assetPath("/assets/hero-miniature.webp"), alt: "Concepto de una miniatura de perro junto a su fotografía de referencia", label: "Su versión mini" },
+  { src: assetPath("/assets/cat-miniature.webp"), alt: "Concepto de una miniatura personalizada de gato", label: "También para gatos" },
+  { src: assetPath("/assets/craft-miniature.webp"), alt: "Escena conceptual del proceso de pintura de una miniatura", label: "El detalle artesanal" },
 ];
 
 export function ProductGallery() {

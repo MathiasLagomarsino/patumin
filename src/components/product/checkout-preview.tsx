@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { assetPath } from "@/lib/urls";
 import Link from "next/link";
 import { useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { ArrowLeft, ArrowRight, Check, Clock3, LockKeyhole, Pencil, ShoppingBag } from "lucide-react";
@@ -77,7 +78,7 @@ export function CheckoutPreview() {
         </div>
         <aside className="checkout-summary" aria-labelledby="summary-title">
           <div className="checkout-summary-top"><h2 id="summary-title">Tu idea, en miniatura</h2><Link href="/crear-mi-miniatura" aria-label="Editar personalización"><Pencil size={16} /></Link></div>
-          <div className="checkout-summary-product"><div className="checkout-summary-image"><Image src={draft.petType === "gato" ? "/assets/cat-miniature.webp" : "/assets/hero-miniature.webp"} alt={`Imagen demostrativa de una miniatura de ${draft.petType}, generada con IA`} fill sizes="90px" /></div><div><h3>{draft.petName}</h3><p>Miniatura personalizada · {draft.petType === "gato" ? "Gato" : "Perro"}</p><span>Tamaño de muestra · A definir</span><small>Cantidad: {draft.quantity}</small></div></div>
+          <div className="checkout-summary-product"><div className="checkout-summary-image"><Image src={assetPath(draft.petType === "gato" ? "/assets/cat-miniature.webp" : "/assets/hero-miniature.webp")} alt={`Imagen demostrativa de una miniatura de ${draft.petType}, generada con IA`} fill sizes="90px" /></div><div><h3>{draft.petName}</h3><p>Miniatura personalizada · {draft.petType === "gato" ? "Gato" : "Perro"}</p><span>Tamaño de muestra · A definir</span><small>Cantidad: {draft.quantity}</small></div></div>
           {draft.notes && <div className="checkout-notes"><span>Eso que lo hace especial</span><p>{draft.notes}</p></div>}
           <dl className="checkout-totals"><div><dt>Miniatura{draft.quantity > 1 ? "s" : ""} ({draft.quantity})</dt><dd>A confirmar</dd></div><div><dt>Envío a Argentina</dt><dd>A confirmar</dd></div><div className="checkout-total"><dt>Total en ARS</dt><dd>A confirmar</dd></div></dl>
           <p className="checkout-price-note">Vas a conocer el precio final, incluido el envío, antes de confirmar cualquier compra.</p>

@@ -1,5 +1,19 @@
 # Verificación de la fase 1
 
+## Corrección de GitHub Pages — 27 de octubre de 2026
+
+Se reprodujo el fallo del job `122381702365`, commit `c391dd3e519a576e39ac6dc92afc5c92c575b935`: `next build` detenía la exportación porque `/pedido/[reference]` no tenía `generateStaticParams`.
+
+- Se genera únicamente `/pedido/consulta`, una página informativa sin datos de pedidos. Las referencias desconocidas no se exportan.
+- Se retiró el workflow de Jekyll; Next.js es el único publicador de Pages.
+- Imágenes, iconos, URLs canónicas y sitemap respetan el subdirectorio de publicación.
+- El workflow obtiene dominio y prefijo de la acción oficial de Pages y valida el artefacto antes de cargarlo.
+- Build reproducido con `NEXT_PUBLIC_BASE_PATH=/patumin` y `NEXT_PUBLIC_SITE_URL=https://MathiasLagomarsino.github.io/patumin`: aprobado.
+- `npm run test:export`: 16 páginas y sus archivos locales validados.
+- Lint, TypeScript y seis pruebas unitarias aprobados. YAML del workflow parseado correctamente.
+
+Esto valida la corrección local; el resultado del próximo job de GitHub Actions solo se podrá confirmar después de subir los cambios. Pages sigue siendo una vista previa estática y no ejecuta el endpoint de checkout ni procesa pagos.
+
 ## Revisión de identidad — 25 de octubre de 2026
 
 Paleta actualizada a beige, gris y púrpura. Logo reemplazado por una patita vectorial con sonrisa, variantes exportables y favicon sincronizados. El saludo de la marca dura 560 ms y está desactivado con `prefers-reduced-motion`.

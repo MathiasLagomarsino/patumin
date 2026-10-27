@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// Pages can only publish known static URLs. This is an informational page,
+// never an exported customer/order record. Unknown references remain 404.
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return [{ reference: "consulta" }];
+}
+
 /** Public references alone must never grant access to customer data. */
 export default function OrderLookupPage() {
   return (
