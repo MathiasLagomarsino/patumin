@@ -6,7 +6,7 @@ Una versión chiquita de un amor enorme. Tienda boutique de miniaturas personali
 
 **Fase 1 implementada: identidad inicial y frontend navegable.** La web incluye home completa, selector de tamaño y cantidad, galería filtrable y ampliable, proceso, preguntas frecuentes, contacto y borradores de políticas. El checkout es una vista previa: reúne contacto, entrega y resumen en una sola pantalla, sin un paso intermedio de revisión de datos, pero no crea pedidos ni procesa pagos.
 
-Las cinco fotografías son conceptos generados con IA, identificados en pantalla. No son pruebas de trabajos entregados. No se inventaron precios, medidas, contactos, testimonios ni información fiscal.
+Las cinco fotografías son conceptos generados con IA, identificados en pantalla. No son pruebas de trabajos entregados. Los tamaños siguen el catálogo público de Pirucho y los precios en ARS parten de $60.000, según la indicación del titular; ver [criterio de precios](docs/PRICING.md). No se inventaron contactos, testimonios ni información fiscal.
 
 | Funcionalidad | Estado |
 | --- | --- |
@@ -15,7 +15,8 @@ Las cinco fotografías son conceptos generados con IA, identificados en pantalla
 | Selección de tamaño y cantidad, con acceso directo al checkout | Implementada |
 | Recuperación de la selección en el mismo navegador | Implementada con `localStorage` |
 | Formulario de contacto y entrega | Vista previa; pago deshabilitado y datos sin enviar ni persistir |
-| Precios, variantes y costos de envío | Pendientes de definición comercial |
+| Precios y variantes | 10, 16 y 20 cm de alto, desde $60.000 ARS; detalle en `docs/PRICING.md` |
+| Costos de envío | Pendientes de definición comercial |
 | Creación y persistencia de pedidos | Fase 2; no implementadas |
 | Mercado Pago y webhooks | Fase 2; no configurados ni probados |
 | Confirmación verificada y WhatsApp poscompra | Fase 2; no implementados |
@@ -80,7 +81,7 @@ Las rutas de pedido no exponen información ni confirman transacciones. Se expor
 
 ## Personalización y privacidad
 
-El borrador guarda exclusivamente la variante demostrativa y la cantidad bajo `patumin:miniature-draft:v1`. Se valida al recuperarlo, se eliminan campos desconocidos y se rechazan datos corruptos. Las selecciones anteriores siguen funcionando; sus datos de mascota se descartan al leerlos y al volver a guardar. El nombre, las fotos y los detalles de la mascota se pedirán por WhatsApp después del pago confirmado. La acción “Borrar selección” permite eliminarlo. Nombre del comprador, email, teléfono y domicilio no se guardan ni se envían en esta fase.
+El borrador guarda exclusivamente la variante seleccionada y la cantidad bajo `patumin:miniature-draft:v1`. Se valida al recuperarlo, se eliminan campos desconocidos y se rechazan datos corruptos. Las selecciones anteriores siguen funcionando; sus datos de mascota se descartan al leerlos y al volver a guardar. El nombre, las fotos y los detalles de la mascota se pedirán por WhatsApp después del pago confirmado. La acción “Borrar selección” permite eliminarlo. Nombre del comprador, email, teléfono y domicilio no se guardan ni se envían en esta fase.
 
 No hay analítica, cookies publicitarias, carga de fotos ni formularios que simulen un envío exitoso. Las políticas son borradores explícitos que requieren revisión legal argentina.
 

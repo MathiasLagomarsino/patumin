@@ -19,8 +19,6 @@ export default function ProductPage() {
             <p className="eyebrow">SU HISTORIA, EN MINIATURA</p>
             <h1>Miniatura personalizada de tu mascota</h1>
             <p className="product-description">Sus gestos, sus colores y esa mirada que conocés de memoria. Una pieza creada especialmente para celebrar a tu compañero.</p>
-            <div className="product-price"><strong>A confirmar</strong><span>Precio en pesos argentinos</span></div>
-            <div className="product-details-rule" />
             <ProductConfigurator />
             <div className="product-production"><Clock3 size={21} aria-hidden="true" /><p>Cada miniatura se realiza especialmente para vos. El proceso de producción tiene una duración estimada de <strong>{siteConfig.production.minDays} a {siteConfig.production.maxDays} días.</strong><small>El tipo de días y el inicio del plazo se confirmarán antes de comprar.</small></p></div>
             <p className="product-shipping"><PackageCheck size={18} aria-hidden="true" /> Envíos a Argentina. El costo se informará antes de la compra.</p>

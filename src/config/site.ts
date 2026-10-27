@@ -14,7 +14,14 @@ export const siteConfig = {
   product: {
     id: "miniatura-personalizada",
     name: "Miniatura personalizada de tu mascota",
-    variants: [{ id: "demo", title: "A definir", size: null, priceArs: null, active: false }],
+    // Heights and poses follow Pirucho's public catalog; see docs/PRICING.md.
+    variants: [
+      { id: "10cm-sentado", title: "10 cm · Sentado", size: 10, pose: "Sentado", priceArs: 60000, active: true },
+      { id: "10cm-parado", title: "10 cm · Parado", size: 10, pose: "Parado", priceArs: 62000, active: true },
+      { id: "16cm-sentado", title: "16 cm · Sentado", size: 16, pose: "Sentado", priceArs: 81000, active: true },
+      { id: "16cm-parado", title: "16 cm · Parado", size: 16, pose: "Parado", priceArs: 104000, active: true },
+      { id: "20cm", title: "20 cm de alto", size: 20, pose: null, priceArs: 162000, active: true },
+    ],
     materials: null,
     baseOptions: [],
     includedRevisions: null,

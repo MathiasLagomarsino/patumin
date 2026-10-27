@@ -1,5 +1,14 @@
 # Verificación de la fase 1
 
+## Tamaños y precios — 27 de octubre de 2026
+
+- Catálogo de referencia: cinco variantes de Pirucho, verificadas en su JSON público. Se documentan los valores UYU y la escala ARS desde $60.000 en `docs/PRICING.md`.
+- Lint, compilación con prefijo `/patumin`, ocho pruebas unitarias y validación de las 16 páginas exportadas: aprobados.
+- Navegador: las cinco selecciones actualizan el precio por unidad; tres figuras de 16 cm parado producen un subtotal de $312.000 tanto en producto como en checkout, conservado al recargar.
+- La opción inicial de 10 cm sentado muestra $60.000. Los borradores del antiguo tamaño de muestra conservan la cantidad y pasan a esta opción. Se rechazan variantes ajenas al catálogo y se descartan precios guardados en el navegador.
+- Producto sin desbordes horizontales a 360, 390, 768, 1024 y 1440 px; revisión visual en escritorio y móvil. Consola sin errores ni advertencias durante el recorrido.
+- Envío y total con envío pendientes de confirmación; los pagos siguen deshabilitados. Selección de prueba eliminada al terminar.
+
 ## Simplificación del pedido — 27 de octubre de 2026
 
 El producto pide únicamente tamaño y cantidad y lleva directamente al checkout. Se retiraron tipo, nombre y observaciones de mascota del formulario y del borrador. Contacto, entrega y resumen comparten una pantalla sin la acción intermedia “Revisar mis datos”. Fotos, nombre y detalles se coordinan por WhatsApp después del pago confirmado, cuando se habiliten las compras.

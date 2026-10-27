@@ -34,7 +34,7 @@ export const faqs = [
   {
     question: "¿Cómo puedo pedir una miniatura?",
     answer:
-      "El proceso es simple: elegís tamaño y cantidad, completás tus datos y pagás. Después nos enviás las fotos, el nombre y los detalles de tu mascota por WhatsApp. Estamos preparando la apertura de pedidos: por ahora podés recorrer la vista previa, sin realizar una compra. Los tamaños, precios y medios de pago se publicarán cuando estén confirmados.",
+      "El proceso es simple: elegís tamaño y cantidad, completás tus datos y pagás. Después nos enviás las fotos, el nombre y los detalles de tu mascota por WhatsApp. Ya podés ver los tamaños y precios en “Crear mi miniatura”. Estamos preparando los envíos y medios de pago: por ahora podés recorrer la vista previa, sin realizar una compra.",
   },
   {
     question: "¿Qué fotografías necesitan?",

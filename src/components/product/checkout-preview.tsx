@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site";
 import { assetPath } from "@/lib/urls";
 import { clearDraft, getDraftSnapshot, getServerDraftSnapshot, parseDraft, subscribeDraft } from "@/lib/draft";
 import type { CustomerDetails } from "@/types/commerce";
+import { formatArs } from "@/lib/money";
 
 const fields: { key: keyof CustomerDetails; label: string; placeholder: string; autoComplete: string; type?: string; maxLength: number; wide?: boolean; group: "contact" | "shipping" }[] = [
   { key: "email", label: "Email", placeholder: "Tu correo electrónico", autoComplete: "email", type: "email", maxLength: 254, wide: true, group: "contact" },
@@ -22,8 +23,9 @@ const fields: { key: keyof CustomerDetails; label: string; placeholder: string; 
 export function CheckoutPreview() {
   const stored = useSyncExternalStore(subscribeDraft, getDraftSnapshot, getServerDraftSnapshot);
   const draft = parseDraft(stored);
+  const selectedVariant = siteConfig.product.variants.find((variant) => variant.id === draft?.variantId);
 
-  if (!draft || !siteConfig.product.variants.some((variant) => variant.id === draft.variantId)) {
+  if (!draft || !selectedVariant) {
     return (
       <div className="checkout-empty">
         <span className="checkout-empty-icon"><ShoppingBag size={30} strokeWidth={1.4} aria-hidden="true" /></span>
@@ -40,7 +42,7 @@ export function CheckoutPreview() {
     <div className="checkout-page container">
       <Link href="/crear-mi-miniatura" className="product-back"><ArrowLeft size={14} aria-hidden="true" /> Volver al producto</Link>
       <div className="checkout-heading"><p className="eyebrow">TU COMPAÑERO, EN MINIATURA</p><h1>Finalizar mi pedido.</h1><p>Contacto, entrega y pago en un solo lugar.</p></div>
-      <div id="checkout-preview-notice" className="checkout-preview-banner"><LockKeyhole size={19} aria-hidden="true" /><p><strong>Vista previa: los pagos todavía no están habilitados.</strong> Estamos preparando los precios y las opciones de envío. Los datos que pruebes acá no se envían ni se guardan, y no se crea ningún pedido.</p></div>
+      <div id="checkout-preview-notice" className="checkout-preview-banner"><LockKeyhole size={19} aria-hidden="true" /><p><strong>Vista previa: los pagos todavía no están habilitados.</strong> Estamos preparando las opciones de envío y los medios de pago. Los datos que pruebes acá no se envían ni se guardan, y no se crea ningún pedido.</p></div>
       <form className="checkout-layout" onSubmit={(event) => event.preventDefault()}>
         <div className="checkout-form-panel">
           {([{ id: "contact", title: "Contacto" }, { id: "shipping", title: "Entrega en Argentina" }] as const).map((group) => (
@@ -60,8 +62,8 @@ export function CheckoutPreview() {
         </div>
         <aside className="checkout-summary" aria-labelledby="summary-title">
           <div className="checkout-summary-top"><h2 id="summary-title">Resumen del pedido</h2><Link href="/crear-mi-miniatura" aria-label="Editar tamaño y cantidad"><Pencil size={16} /></Link></div>
-          <div className="checkout-summary-product"><div className="checkout-summary-image"><Image src={assetPath("/assets/hero-miniature.webp")} alt="Imagen de concepto de una miniatura de mascota, generada con IA" fill sizes="90px" /></div><div><h3>Miniatura personalizada</h3><p>Para tu perro o gato</p><span>Tamaño de muestra · Medidas a definir</span><small>Cantidad: {draft.quantity}</small></div></div>
-          <dl className="checkout-totals"><div><dt>Miniatura{draft.quantity > 1 ? "s" : ""} ({draft.quantity})</dt><dd>A confirmar</dd></div><div><dt>Envío a Argentina</dt><dd>A confirmar</dd></div><div className="checkout-total"><dt>Total en ARS</dt><dd>A confirmar</dd></div></dl>
+          <div className="checkout-summary-product"><div className="checkout-summary-image"><Image src={assetPath("/assets/hero-miniature.webp")} alt="Imagen de concepto de una miniatura de mascota, generada con IA" fill sizes="90px" /></div><div><h3>Miniatura personalizada</h3><p>Para tu perro o gato</p><span>{selectedVariant.title}{!selectedVariant.pose && " · Postura a coordinar"}</span><small>{draft.quantity} × {formatArs(selectedVariant.priceArs)}</small></div></div>
+          <dl className="checkout-totals"><div><dt>Subtotal ({draft.quantity} {draft.quantity === 1 ? "miniatura" : "miniaturas"})</dt><dd>{formatArs(selectedVariant.priceArs * draft.quantity)}</dd></div><div><dt>Envío a Argentina</dt><dd>A confirmar</dd></div><div className="checkout-total"><dt>Total con envío</dt><dd>A confirmar</dd></div></dl>
           <p className="checkout-price-note">Vas a conocer el precio final, incluido el envío, antes de pagar.</p>
           <button className="button button-primary checkout-payment" type="submit" disabled aria-describedby="checkout-preview-notice"><LockKeyhole size={16} aria-hidden="true" /> Pagar pedido</button>
           <p className="checkout-production"><Clock3 size={16} aria-hidden="true" /><span>Producción estimada: {siteConfig.production.minDays} a {siteConfig.production.maxDays} días. El cómputo del plazo está pendiente de confirmación.</span></p>

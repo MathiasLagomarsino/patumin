@@ -1,11 +1,12 @@
 import type { CustomerDetails, CustomerErrors, MiniatureDraft } from "@/types/commerce";
+import { siteConfig } from "../config/site.ts";
 
 export const DRAFT_STORAGE_KEY = "patumin:miniature-draft:v1";
 export const DRAFT_CHANGE_EVENT = "patumin:draft-changed";
 
 export const emptyDraft: MiniatureDraft = {
   version: 1,
-  variantId: "demo",
+  variantId: siteConfig.product.variants[0].id,
   quantity: 1,
 };
 
@@ -25,9 +26,12 @@ export function parseDraft(raw: string | null): MiniatureDraft | null {
       draft.quantity < 1 ||
       draft.quantity > 5
     ) return null;
+    // Preserve quantities from the former sample variant without restoring pet data.
+    const variantId = draft.variantId === "demo" ? emptyDraft.variantId : draft.variantId;
+    if (!siteConfig.product.variants.some((variant) => variant.active && variant.id === variantId)) return null;
     return {
       version: 1,
-      variantId: draft.variantId,
+      variantId,
       quantity: draft.quantity,
     };
   } catch {

@@ -23,7 +23,7 @@ const policies = {
     sections: [
       { title: "Estado actual de la tienda", text: "PATUMÍN está en una etapa de presentación y preparación comercial. La personalización disponible sirve para explorar una idea; no constituye una compra, reserva o aceptación de un precio. Los pagos todavía no están habilitados." },
       { title: "Información del emprendimiento", text: "Antes de abrir la tienda se deben completar la identidad del proveedor, domicilio, datos fiscales y canales de atención, junto con toda información comercial exigible." },
-      { title: "Producto y personalización", text: "La propuesta consiste en miniaturas personalizadas de perros y gatos, modeladas a partir de fotografías y con terminación artesanal. Deben confirmarse materiales, tamaños, precios, opciones de base, alcance de la personalización y condiciones de revisión del diseño." },
+      { title: "Producto y personalización", text: "La propuesta consiste en miniaturas personalizadas de perros y gatos, modeladas a partir de fotografías y con terminación artesanal. Los tamaños y precios se muestran en la página del producto. Deben confirmarse materiales, opciones de base, alcance de la personalización y condiciones de revisión del diseño." },
       { title: "Confirmación y pago", text: "La compra solo estará disponible cuando las condiciones comerciales estén completas y la integración de pagos haya sido configurada y probada. El precio total y el costo del envío deberán conocerse antes de confirmar. Visitar una página de confirmación no acredita por sí mismo un pago." },
     ],
   },
